@@ -1,17 +1,14 @@
+"use client"
+
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
-import { PrismaClient } from "@repo/db";
-const client =new PrismaClient();
-
+import { Appbar } from "@repo/ui/appbar";
+import { signIn,signOut , useSession} from "next-auth/react";
 export default function Home() {
+  const sesssion=useSession();
   return (
     <div>
-      <div className="text-red-500">
-        Hi Rishi beta
-      </div>
-      <Button appName=" app">
-        Hi their
-      </Button>
+      <Appbar onSignin={signIn} onSignout={signOut} user={sesssion.data?.user}/>
     </div>)
 }
