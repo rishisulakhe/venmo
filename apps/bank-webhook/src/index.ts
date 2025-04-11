@@ -6,7 +6,8 @@ app.use(express.json());
 
 app.post("/hdfcwebhook",async (req,res)=>{
     //Add zod validation here
-    //Check if request is coming from hdfc bank , use a webhook secret here
+    //Todo : HDFc bank should ideally send us a secret so we know this is send by them
+    //Todo: check if this is onRampTxn is processing or not
     const paymentInformation={
         token:req.body.token,
         userId:req.body.user_Indentifier,
