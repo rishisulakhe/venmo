@@ -1,6 +1,14 @@
-import { SendCard } from "../../../components/SendMoney"
-export default function() {
-    return <div className="w-full">
-        <SendCard />
+import { SendMoneyCard } from "../../../components/SendMoney";
+
+export default function Home() {
+  return (
+    <div className="w-screen ">
+      <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
+        Wallet transfer
+      </div>
+      <div className="pt-5 flex justify-center">
+        <SendMoneyCard />
+      </div>
     </div>
+  );
 }

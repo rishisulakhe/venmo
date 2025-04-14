@@ -16,13 +16,15 @@ export async function createOnRampTransaction(amount:number,provider:string) {
             msg:"User not found"
         }
     }
+    try{
+
     await prisma.onRampTransaction.create({
         data:{
             userId:Number(userId),
             amount:amount,
             status:"Processing",
             startTime:new Date(),
-            provider,
+            provider:provider,
             token:token
         }
     })
@@ -30,4 +32,11 @@ export async function createOnRampTransaction(amount:number,provider:string) {
     return({
         msg:"OnRampTrasaction added"
     })
+}
+catch(e){
+return {
+    message:e,
+}
+}
+
 }

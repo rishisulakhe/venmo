@@ -1,32 +1,45 @@
-"use client"
+"use client";
 import { Button } from "@repo/ui/button";
-import { Card } from "@repo/ui/card";
-import { Center } from "@repo/ui/center";
+import { Card2 } from "@repo/ui/card2";
 import { TextInput } from "@repo/ui/textinput";
 import { useState } from "react";
 import { p2pTransfer } from "../app/lib/actions/p2pTransfer";
 
-export function SendCard() {
-    const [number, setNumber] = useState("");
-    const [amount, setAmount] = useState("");
+export function SendMoneyCard() {
+  const [to, setTo] = useState("");
+  const [amount, setAmount] = useState("");
 
-    return <div className="h-[90vh]">
-        <Center>
-            <Card title="Send">
-                <div className="min-w-72 pt-2">
-                    <TextInput placeholder={"Number"} label="Number" onChange={(value) => {
-                        setNumber(value)
-                    }} />
-                    <TextInput placeholder={"Amount"} label="Amount" onChange={(value) => {
-                        setAmount(value)
-                    }} />
-                    <div className="pt-4 flex justify-center">
-                        <Button onClick={async () => {
-                         await p2pTransfer(number,Number(amount)*100)
-                        }}>Send</Button>
-                    </div>
-                </div>
-            </Card>
-        </Center>
+  return (
+    <div className="h-[90vh] w-96 ">
+      <>
+        <Card2 title="Send">
+          <div className="">
+            <TextInput
+              placeholder="User"
+              label="Phone number"
+              onchange={(e) => {
+                setTo(e);
+              }}
+            ></TextInput>
+            <TextInput
+              placeholder="200"
+              label="Amount"
+              onchange={(e) => {
+                setAmount(e);
+              }}
+            ></TextInput>
+            <div className="flex justify-center p-5">
+              <Button
+                onClick={async () => {
+                  await p2pTransfer(amount, to);
+                }}
+              >
+                Send Money
+              </Button>
+            </div>
+          </div>
+        </Card2>
+      </>
     </div>
+  );
 }
