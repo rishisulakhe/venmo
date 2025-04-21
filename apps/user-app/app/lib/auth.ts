@@ -57,7 +57,7 @@ export const authOptions = {
     ],
     secret: process.env.JWT_SECRET || "secret",
     site:
-    process.env.NEXTAUTH_URL || "https://venmorishi.netlify.app",
+    "https://venmorishi.netlify.app",
     callbacks: {
         // TODO: can u fix the type here? Using any is bad
         async session({ token, session }: any) {
